@@ -33,11 +33,14 @@ public class UserInterfaceMenu : UserInterface
     void Start()
     {
         StartButton.onClick.AddListener(StartGame);
-        StartButton.onClick.AddListener(DataManager.Instance.SaveUserData);
         StartButtonClickable(false);
-
         ExitButton.onClick.AddListener(ExitGame);
-        ExitButton.onClick.AddListener(DataManager.Instance.SaveUserData);
+
+        if (DataManager.Instance != null)
+        {
+            StartButton.onClick.AddListener(DataManager.Instance.SaveUserData);
+            ExitButton.onClick.AddListener(DataManager.Instance.SaveUserData);
+        }
 
         UserNameInput.onEndEdit.AddListener(nameInput => TakeNameInput(nameInput));
 
@@ -84,7 +87,6 @@ public class UserInterfaceMenu : UserInterface
 
             // Empty the text box for new input.
             UserNameInput.text = string.Empty;
-            Debug.Log("Emptied Vox");
         }
     }
 
