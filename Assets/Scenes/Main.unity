@@ -1212,11 +1212,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3626808081427253434, guid: 6368e677046e3034b9b2d3cf321717f1, type: 3}
       propertyPath: m_Name
-      value: Enviroment
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 5987356625552150330, guid: 6368e677046e3034b9b2d3cf321717f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5987356625552150330, guid: 6368e677046e3034b9b2d3cf321717f1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1253,6 +1253,11 @@ PrefabInstance:
     - target: {fileID: 5987356625552150330, guid: 6368e677046e3034b9b2d3cf321717f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305957502971420573, guid: 6368e677046e3034b9b2d3cf321717f1, type: 3}
+      propertyPath: <StartingStatsCard>k__BackingField.<Description>k__BackingField
+      value: Placed at game start. Has limited resources, cost 1 to activate ablity.
+        Cooldown between ability usage.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1328,9 +1333,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell
       objectReference: {fileID: 0}
+    - target: {fileID: 3608060418901480869, guid: c8723e079f4301b4b9552efea0ce3cf1, type: 3}
+      propertyPath: <StartingStatsCard>k__BackingField.<Description>k__BackingField
+      value: Can be cast to activate an effect.
+      objectReference: {fileID: 0}
     - target: {fileID: 5550909268642441600, guid: c8723e079f4301b4b9552efea0ce3cf1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5550909268642441600, guid: c8723e079f4301b4b9552efea0ce3cf1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1384,5 +1393,5 @@ SceneRoots:
   - {fileID: 1252838766}
   - {fileID: 41695499}
   - {fileID: 2390869530283468079}
-  - {fileID: 3719223149218409909}
   - {fileID: 2096957829992670083}
+  - {fileID: 3719223149218409909}

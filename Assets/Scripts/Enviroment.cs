@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static Recruit;
 
-public class Enviroment : Card
+public class Environment : Card
 {
     private int resources;
     public int Resource
     {
         get { return resources; }
-        set
+        protected set
         {
             resources = PreventLessThenZero(value);
         } 
@@ -20,20 +21,8 @@ public class Enviroment : Card
     public int Cooldown
     { 
         get { return cooldown; } 
-        set { cooldown = PreventLessThenZero(value); } 
+        protected set { cooldown = PreventLessThenZero(value); } 
     }
-
-    [Serializable]
-    protected class StartingStatsEnviroment : StartingStats
-    {
-        [field: SerializeField] public int Resource
-        { get; set; }
-        [field: SerializeField] public int Cooldown
-        { get; set; }
-    }
-
-    [field: SerializeField] protected StartingStatsEnviroment StartingStatsCard
-    { get; private set; }
 
     protected override void Awake()
     {
@@ -55,5 +44,47 @@ public class Enviroment : Card
     protected override void OnPlay()
     {
         throw new System.NotImplementedException();
+    }
+
+    // Variables, methods and sub-class related to initial Card stats and initialising the values to the class variables. ---------------------
+    [Serializable] protected class StartingStatsEnviroment : StartingStats
+    {
+        [field: SerializeField]
+        public int Resource
+        { get; set; }
+        [field: SerializeField]
+        public int Cooldown
+        { get; set; }
+    }
+    // Serialized member of StartingClass allows stats to be inputted in UnityEditor.
+    [field: SerializeField] protected StartingStatsEnviroment StartingStatsCard
+    { get; private set; }
+    protected override void InitialiseStartingStats()
+    {
+        if (StartingStatsCard != null)
+        {
+            Name = StartingStatsCard.Name;
+            PointCost = StartingStatsCard.PointCost;
+            Description = StartingStatsCard.Description;
+            Resource = StartingStatsCard.Resource;
+            Cooldown = StartingStatsCard.Cooldown;
+        }
+
+        base.InitialiseStartingStats();
+        ResourceText.text = $"{Resource}";
+        CooldownText.text = $"{Cooldown}";
+    }
+
+
+    // UI related variables and methods. -------------------------------------------------------------------------------------------------------
+    public TextMeshProUGUI ResourceText
+    { get; protected set; }
+    public TextMeshProUGUI CooldownText
+    { get; protected set; }
+    protected override void SetUIReferences()
+    {
+        base.SetUIReferences();
+        ResourceText = transform.Find("Cardback/Canvas/ResourceText").GetComponent<TextMeshProUGUI>();
+        CooldownText = transform.Find("Cardback/Canvas/CooldownText").GetComponent<TextMeshProUGUI>();
     }
 }
